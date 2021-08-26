@@ -29,11 +29,11 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 //Popular games are
-const popular_games = `games?key=4c66ee0033de4c6ca592de77fdea61fa&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
-const upcoming_games = `games?key=4c66ee0033de4c6ca592de77fdea61fa&dates=${currentDate},${nextYear}&ordering=-rating&page_size=10`;
-const newGames = `games?key=4c66ee0033de4c6ca592de77fdea61fa&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+const popular_games = `games?key=${process.env.REACT_APP_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?key=${process.env.REACT_APP_API_KEY}&dates=${currentDate},${nextYear}&ordering=-rating&page_size=10`;
+const newGames = `games?key=${process.env.REACT_APP_API_KEY}&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 
-
+console.log(process.env.REACT_APP_API_KEY);
 
 export const popularGamesURL = () => {
   return `${base_url}${popular_games}`;
@@ -52,14 +52,14 @@ export const newGamesURL =  () =>{
 /* get the game details */
 
 export const gameDetailsURL = (game_id) =>{
-  return `${base_url}games/${game_id}?key=4c66ee0033de4c6ca592de77fdea61fa`
+  return `${base_url}games/${game_id}?key=${process.env.REACT_APP_API_KEY}`
 }
 
 
 
 /* Get the game screenshots */
 export const gameScreenshotsURL = (game_id) =>{
-  return `${base_url}games/${game_id}/screenshots?key=4c66ee0033de4c6ca592de77fdea61fa`
+  return `${base_url}games/${game_id}/screenshots?key=${process.env.REACT_APP_API_KEY}`
 }
 
 
