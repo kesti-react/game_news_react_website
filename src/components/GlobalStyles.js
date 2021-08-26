@@ -32,7 +32,7 @@ const GlobalStyles = createGlobalStyle`
 
     h3{
         font-size:1.3rem;
-        padding:1.3rem;
+        padding:1.3rem 0rem;
     }
 
     p{
@@ -41,6 +41,10 @@ const GlobalStyles = createGlobalStyle`
     }
     a{
         text-decoration: none;
+    }
+
+    img{
+        display:block;
     }
 
 `

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-import {  gameDetailsURL } from '../api';
+import {  gameDetailsURL, gameScreenshotsURL } from '../api';
 
 
 
@@ -13,14 +13,20 @@ import {  gameDetailsURL } from '../api';
 export const loadGameDetails = createAsyncThunk( 
     'games/getGamesDetails',
     async(id) => {
-        const detailData = await axios.get(gameDetailsURL(id))
-        
-        return detailData.data
+        let detailData = await axios.get(gameDetailsURL(id))
+        let gameScreenshots = await axios.get(gameScreenshotsURL(id))
+
+        detailData = detailData.data
+        gameScreenshots = gameScreenshots.data
+
+        return {detailData,gameScreenshots}
     }
 )
 
 const initState = {
-    game:{}
+    game:{platforms:[]},
+    screenshots:[],
+    status:null
 
 };
 
@@ -34,10 +40,13 @@ const gameDetailsSlice = createSlice({
         
         [loadGameDetails.pending]: (state, action) => {
             state.status = 'loading'
+
         },
         [loadGameDetails.fulfilled]: (state, action) => {
             state.status = 'succeeded'
-            state.game = action.payload
+            state.game = action.payload.detailData
+            state.screenshots = action.payload.gameScreenshots.results
+            
 
 
         },
@@ -50,6 +59,10 @@ const gameDetailsSlice = createSlice({
 })
 
 
+
+export const selectGameDetails = (state) => state.gameDetails
+
+// console.log(typeof selectGameDetails);
 
 //Export Reducer
 

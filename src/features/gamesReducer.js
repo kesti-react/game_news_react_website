@@ -8,9 +8,7 @@ import { popularGamesURL, newGamesURL, upcomingGamesURL } from '../api';
 - Must not do any asynchronous logic or other "side effects"
 - Not allow to modify the existing state. Instead, they must make immutable updates, by copying the 
 existing state and making changes to the copied values. 
-- Calculate the new state based on the state and action arguments*/
-
-
+- Calculate the new state based on the state and action arguments */
 
 export const loadGames = createAsyncThunk(
     'games/getGames',
@@ -28,10 +26,6 @@ export const loadGames = createAsyncThunk(
 
     }
 )
-
-
-
-
 
 
 //Redux Toolkit allows us to write "mutating" logic in reducers. It

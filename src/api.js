@@ -54,3 +54,22 @@ export const newGamesURL =  () =>{
 export const gameDetailsURL = (game_id) =>{
   return `${base_url}games/${game_id}?key=4c66ee0033de4c6ca592de77fdea61fa`
 }
+
+
+
+/* Get the game screenshots */
+export const gameScreenshotsURL = (game_id) =>{
+  return `${base_url}games/${game_id}/screenshots?key=4c66ee0033de4c6ca592de77fdea61fa`
+}
+
+
+/* change the Url to get a smaller size image */
+
+export const smallImage = (imagePath, size) => {
+  const image = imagePath.match(/media\/screenshots/) 
+    ? imagePath.replace("media/screenshots",`media/resize/${size}/-/screenshots`)
+    : imagePath.replace("/media/games/",`/media/resize/${size}/-/games/`)
+
+  return image
+
+}
