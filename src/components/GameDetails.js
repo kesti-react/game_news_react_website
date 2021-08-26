@@ -91,7 +91,8 @@ const GameDetails = ({ pathId }) => {
                                     {detail.game.platforms.map((data) => (
                                         <img 
                                         src={getPlatform(data.platform.name)} 
-                                        key={data.platform.id}/>
+                                        key={data.platform.id}
+                                        alt="game"/>
 
                                     ))}
                                 </Platforms>
